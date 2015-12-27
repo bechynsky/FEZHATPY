@@ -1,5 +1,6 @@
 import ADS7830
-
+import RPi.GPIO as GPIO
+ 
 class FEZHAT:
     AIN1 = 1
     AIN2 = 2
@@ -7,8 +8,19 @@ class FEZHAT:
     AIN6 = 6
     AIN7 = 7
     
+    GIO26 = 26
+    GIO16 = 16
+    
+    SW_DIO18 = 18
+    SW_DIO22 = 22
+    
+    LED = 24
+    
     def __init__(self):
         self._ads = ADS7830.ADS7830(1, 0x48)
+        GPIO.setmode(GPIO.BCM)
+
+        GPIO.setup(LED, GPIO.OUT)
         
     def get_light(self):
         return self._ads.read(5) / 255.0
@@ -20,6 +32,12 @@ class FEZHAT:
 
     def read_analog(self, channel):
         return self._ads.read(channel)
+        
+    def led_on(self):
+        GPIO.output(LED, GPIO.HIGH)
+
+    def led_off(self):
+        GPIO.output(LED, GPIO.LOW)
 
 if __name__ == "__main__":
     fh = FEZHAT()
