@@ -18,7 +18,7 @@ class FEZHAT:
         # see page 8
         return (((3300 / 255) * self._ads.read(4)) - 400) / 19.5
 
-    def read_analog(channel):
+    def read_analog(self, channel):
         return self._ads.read(channel)
 
 if __name__ == "__main__":
