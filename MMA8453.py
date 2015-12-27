@@ -17,8 +17,9 @@ class MMA8453:
         rawValues = []
         # read data for x, y, z
         # see page 20 in chapter 6.1 Data Register
-        for i in range(1,9):
-            rawValues.append(self._bus.read_byte_data(self._address, i))
+        self._bus.write_byte(self._address, 0x01)
+        for i in range(0,6):
+            rawValues.append(self._bus.read_byte(self._address))
 
         return rawValues
         
