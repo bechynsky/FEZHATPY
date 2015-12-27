@@ -1,5 +1,6 @@
 # FEZHATPY
-Libraries for [FEZ HAT](https://www.ghielectronics.com/catalog/product/500) based on [C# library](https://bitbucket.org/ghi_elect/windows-iot).
+Libraries for [FEZ HAT](https://www.ghielectronics.com/catalog/product/500) based on [C# library](https://bitbucket.org/ghi_elect/windows-iot). 
+For PWM support see [FEZ HAT and Linux](https://www.ghielectronics.com/docs/333/fez-hat-and-linux).
 
 ## FEZHAT
 Main library.
