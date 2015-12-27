@@ -11,16 +11,21 @@ class FEZHAT:
     GIO26 = 26
     GIO16 = 16
     
+    # onbord switch
     SW_DIO18 = 18
     SW_DIO22 = 22
     
+    # onboard LED
     LED = 24
     
     def __init__(self):
         self._ads = ADS7830.ADS7830(1, 0x48)
+        
         GPIO.setmode(GPIO.BCM)
 
         GPIO.setup(self.LED, GPIO.OUT)
+        GPIO.setup(self.SW_DIO18, GPIO.IN)
+        GPIO.setup(self.SW_DIO22, GPIO.IN)
         
     def get_light(self):
         return self._ads.read(5) / 255.0
@@ -38,6 +43,14 @@ class FEZHAT:
 
     def led_off(self):
         GPIO.output(self.LED, GPIO.LOW)
+        
+    def is_sw_dio18_pressed(self):
+        return GPIO.input(self.SW_DIO18) == GPIO.LOW
+
+    def is_sw_dio22_pressed(self):
+        return GPIO.input(self.SW_DIO22) == GPIO.LOW
+
+
 
 if __name__ == "__main__":
     fh = FEZHAT()
