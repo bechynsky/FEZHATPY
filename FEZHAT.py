@@ -20,7 +20,7 @@ class FEZHAT:
         self._ads = ADS7830.ADS7830(1, 0x48)
         GPIO.setmode(GPIO.BCM)
 
-        GPIO.setup(LED, GPIO.OUT)
+        GPIO.setup(self.LED, GPIO.OUT)
         
     def get_light(self):
         return self._ads.read(5) / 255.0
@@ -34,13 +34,14 @@ class FEZHAT:
         return self._ads.read(channel)
         
     def led_on(self):
-        GPIO.output(LED, GPIO.HIGH)
+        GPIO.output(self.LED, GPIO.HIGH)
 
     def led_off(self):
-        GPIO.output(LED, GPIO.LOW)
+        GPIO.output(self.LED, GPIO.LOW)
 
 if __name__ == "__main__":
     fh = FEZHAT()
     print fh.get_light()
     print fh.get_temperature()
     print fh.read_analog(FEZHAT.AIN1)
+    fh.led_on()
