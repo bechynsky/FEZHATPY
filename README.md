@@ -14,4 +14,4 @@ Basic library working with Analog to Digital converter [ADS7830](http://www.ti.c
 
 ## MMA8453
 
-This library doesn't work now.
+This library doesn't work now. There is [problem] (http://raspberrypi.stackexchange.com/questions/7138/mma8452-i2c-module) with kernel module.
